@@ -80,7 +80,7 @@ ReactDOM.render(
 registerServiceWorker();
 ```
 
-Run the webapp using the command `npm start`. Check for any errors.
+Run the webapp using the command `npm start`. Check the console for any errors.
 
 Commit the changes with the message “Redux set up”.
 
@@ -106,6 +106,12 @@ And wrap `<App />` with `<BrowserRouter>`.
 ```
 Check for errors and commit with message “react-router set up”.
 
+Please note that some tutorials might refer to a package called `react-router-redux` that since `react-router@4.0` is implemented into `react-router` itself and doesn't seem to be needed anymore. I have personally not ran into problems with `redux` and `react-router`. If any issues arise refer to https://reacttraining.com/react-router/web/guides/redux-integration.
+
+### connected-react-router
+https://github.com/supasate/connected-react-router
+This puts the `history`, `push`, `location` and etc in redux for easier access, so you don't have to keep passing them around in the props.
+
 ## Set up axios
 
 If you need to make HTTP request in your app (you most likely will) install [axios](https://github.com/axios/axios).
@@ -113,6 +119,8 @@ If you need to make HTTP request in your app (you most likely will) install [axi
     $ npm install --save axios
 
 Check for errors and commit with message “axios set up”.
+
+A more robust option is to make API calls within Redux using [redux-api-middleware](#redux-api-middleware).
 
 # Push to remote
 
@@ -165,5 +173,26 @@ this.props.dispatch({
 ```
 ## mapStateToProps
 ```javascript
-    (reduxState) => (objWhichWillBeInjectedIntoProps)
+(reduxState) => (objWhichWillBeInjectedIntoProps)
 ```
+
+
+# Redux-thunk
+https://github.com/reduxjs/redux-thunk
+
+Why `redux-thunk`? https://stackoverflow.com/questions/35411423/how-to-dispatch-a-redux-action-with-a-timeout/35415559#35415559
+
+## TODO
+- [ ] Write this section
+
+
+# redux-api-middleware
+https://github.com/agraboso/redux-api-middleware
+
+## TODO
+- [ ] Write this section
+
+
+# Authentication to a django-rest-framework powered backend
+- https://medium.com/netscape/full-stack-django-quick-start-with-jwt-auth-and-react-redux-part-i-37853685ab57
+- https://medium.com/@viewflow/full-stack-django-quick-start-with-jwt-auth-and-react-redux-part-ii-be9cf6942957
