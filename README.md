@@ -112,6 +112,8 @@ Please note that some tutorials might refer to a package called `react-router-re
 https://github.com/supasate/connected-react-router
 This puts the `history`, `push`, `location` and etc in redux for easier access, so you don't have to keep passing them around in the props.
 
+https://reacttraining.com/react-router/web/guides/redux-integration `withRouter` wrapper takes care of this apparently.
+
 ## Set up axios
 
 If you need to make HTTP request in your app (you most likely will) install [axios](https://github.com/axios/axios).
@@ -175,7 +177,16 @@ this.props.dispatch({
 ```javascript
 (reduxState) => (objWhichWillBeInjectedIntoProps)
 ```
-
+## middleware
+If you have middlewares to setup
+```javascript
+...
+import { createStore, applyMiddleware } from 'redux';
+...
+const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore);
+...
+<Provider store={createStoreWithMiddleware(reducers)}>
+```
 
 # Redux-thunk
 https://github.com/reduxjs/redux-thunk
