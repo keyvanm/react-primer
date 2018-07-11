@@ -207,3 +207,5 @@ https://github.com/agraboso/redux-api-middleware
 # Authentication to a django-rest-framework powered backend
 - https://medium.com/netscape/full-stack-django-quick-start-with-jwt-auth-and-react-redux-part-i-37853685ab57
 - https://medium.com/@viewflow/full-stack-django-quick-start-with-jwt-auth-and-react-redux-part-ii-be9cf6942957
+## TODO
+- [ ] Create a file with tutorial for this section
