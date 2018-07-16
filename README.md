@@ -45,16 +45,29 @@ export default combineReducers({
 });
 ```
 
+Create a file called `configureStore.js` and add the following lines
+    $ touch src/configureStore.js
+```javascript
+import { createStore } from 'redux'
+
+import rootReducer from './reducers'
+
+export default (initialState) => {
+  let store = createStore(rootReducer, initialState);
+  return store;
+}
+```
+
 Now go to `src/index.js` and add the following lines:
 ```javascript
-import { createStore } from 'redux';
 import { Provider } from 'react-redux';
+import configureStore from './configureStore';
 
-import reducers from './reducers';  // Basically ./reducers/index.js;
+const store = configureStore();
 ```
 In the line `ReactDOM.render(<App />, document.getElementById('root'));` you want to wrap the <App /> component with the following:
 ```javascript
-<Provider store={createStore(reducers)}>
+<Provider store={store}>
   <App />
 </Provider>
 ```
@@ -62,21 +75,20 @@ In the end `index.js` probably looks something like this:
 ```javascript
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore } from 'redux';
-import { Provider } from 'react-redux';
 
-import reducers from './reducers';
+import configureStore from './configureStore';
 import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
+const store = configureStore();
+
 ReactDOM.render(
-  <Provider store={createStore(reducers)}>
+  <Provider store={store}>
     <App />
   </Provider>,
   document.getElementById('root')
 );
-
 registerServiceWorker();
 ```
 
@@ -98,7 +110,7 @@ import { BrowserRouter } from 'react-router-dom';
 ```
 And wrap `<App />` with `<BrowserRouter>`.
 ```javascript
-<Provider store={createStore(reducers)}>
+<Provider store={store}>
   <BrowserRouter>
     <App />
   </BrowserRouter>
