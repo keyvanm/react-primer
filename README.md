@@ -126,16 +126,6 @@ This puts the `history`, `push`, `location` and etc in redux for easier access, 
 
 https://reacttraining.com/react-router/web/guides/redux-integration `withRouter` wrapper takes care of this apparently.
 
-## Set up axios
-
-If you need to make HTTP request in your app (you most likely will) install [axios](https://github.com/axios/axios).
-
-    $ npm install --save axios
-
-Check for errors and commit with message “axios set up”.
-
-A more robust option is to make API calls within Redux using [redux-api-middleware](#redux-api-middleware).
-
 # Push to remote
 
 Create a [GitHub](https://github.com/) repository for your project.
@@ -190,14 +180,14 @@ this.props.dispatch({
 (reduxState) => (objWhichWillBeInjectedIntoProps)
 ```
 ## middleware
-If you have middlewares to setup
+If you have middlewares to setup, in `./configureStore.js`
 ```javascript
 ...
 import { createStore, applyMiddleware } from 'redux';
 ...
 const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore);
 ...
-<Provider store={createStoreWithMiddleware(reducers)}>
+let store = createStoreWithMiddleware(rootReducer, initialState);
 ```
 
 # Redux-thunk
@@ -212,7 +202,14 @@ Why `redux-thunk`? https://stackoverflow.com/questions/35411423/how-to-dispatch-
 # redux-api-middleware
 https://github.com/agraboso/redux-api-middleware
 
-## TODO
+    $ npm install redux-api-middleware --save
+
+Set it up as a [middleware](#middleware). In `./configureStore.js` put
+```javascript
+import { apiMiddleware } from 'redux-api-middleware';
+```
+
+## How to make API calls
 - [ ] Write this section
 
 
@@ -221,3 +218,11 @@ https://github.com/agraboso/redux-api-middleware
 - https://medium.com/@viewflow/full-stack-django-quick-start-with-jwt-auth-and-react-redux-part-ii-be9cf6942957
 ## TODO
 - [ ] Create a file with tutorial for this section
+
+# Set up axios
+
+If you need to make HTTP request within your components install [axios](https://github.com/axios/axios).
+
+    $ npm install --save axios
+
+If you have reducers that contain states with data models of an API, a more robust option is to make API calls within Redux using [redux-api-middleware](#redux-api-middleware).
