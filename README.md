@@ -46,7 +46,9 @@ export default combineReducers({
 ```
 
 Create a file called `configureStore.js` and add the following lines
+
     $ touch src/configureStore.js
+    
 ```javascript
 import { createStore } from 'redux'
 
